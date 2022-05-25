@@ -1,11 +1,13 @@
 import {useState} from 'react'
-// import {useHistory} from "react-router-dom"
+ import {useHistory} from "react-router-dom"
 
-function WatchlistForm({movieId}) {
+function WatchlistForm({movieId, addNewWatchlist}) {
     const [watchlist, setWatchlist] = useState({
         rating: "",
         comment: "",
     });
+
+    const history = useHistory()
 
     const handleChange = (e) => {
         setWatchlist({
@@ -31,16 +33,16 @@ function WatchlistForm({movieId}) {
             if (resp.status === 201) {
                 resp.json()
                 .then(watchlist => {
-                    debugger
-                    //addNewWatchlist(watchlist)
+                    
+                    addNewWatchlist(watchlist)
 
                     setWatchlist({rating: "", comment: ""})
-
+                    history.push('/movies')
                 })
             } else {
                 resp.json()
                 .then(errorObj => {
-                    alert(errorObj.error)
+                    alert(errorObj.errors.join(". "))
                     //setWatchlist({rating: "", comment: ""})
                 })
             }

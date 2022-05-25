@@ -12,14 +12,16 @@ function MoviesCard({movie, deleteMovie, user}) {
     const [movieObj, setMovieObj] = useState(null);
     const [edit, setEdit] = useState(false);
     const history = useHistory()
-    const [watchlists, setWatchlists] = useState([])
-
+    const [watchlists, setWatchlists] = useState(movie?.watchlists)
+console.log(movie)
     useEffect(() => {   
         if (!movie) {
             fetch(`/api/movies/${id}`)
             .then(resp => resp.json())
             .then(movie => {
+                console.log(movie)
               setMovieObj(movie)
+              setWatchlists(movie.watchlists)
             })
         }
     }, [movie, id]);
@@ -29,20 +31,23 @@ function MoviesCard({movie, deleteMovie, user}) {
   }
 
      const addNewWatchlist = (watchlistObj) => {
-         setWatchlists(currentWatchlists => [watchlistObj, ...currentWatchlists])
+         setWatchlists((currentWatchlists) => [watchlistObj, ...currentWatchlists])
      }
 
     const finalMovie = movie ? movie : movieObj
     if (!finalMovie) return <h1>Loading...</h1>
 
     function handleDelete() {
-        fetch(`/api/movies/${movie.id}`, {
+        fetch(`/api/movies/${finalMovie.id}`, {
           method: "DELETE",
         })
-          .then(() => history.push("/movies"))
+          .then(() => {
+          deleteMovie(finalMovie.id)
+          history.push("/movies")
     
-            deleteMovie(movie.id)
-      }
+            
+      })
+    }
   return (
     <div className="movie-card">
        
@@ -53,35 +58,30 @@ function MoviesCard({movie, deleteMovie, user}) {
          
          {user?.role === "admin" ?
          <>
+          <button name="delete" id="delete-btn" onClick={handleDelete}>Delete</button>
          {location.pathname !== "/movies" ? <>
-         
+        
          <Link to={`/movies/${finalMovie.id}/edit`}> 
          <button name="edit" id="edit-btn" onClick={() => setEdit(edit)}>Edit</button></Link>
-         <button name="delete" id="delete-btn" onClick={handleDelete}>Delete</button>
+        
          </> :null} 
          </> : null}
          {location.pathname !== "/movies" ? ( <>
          <h3>Comments:  </h3>
          <WatchlistForm movieId={finalMovie.id} addNewWatchlist={addNewWatchlist} />
          
-         <ul>{finalMovie.comments.map((comment) => (
+         {/* <ul>{finalMovie.comments.map((comment) => (
              <li>
                  <h5>Rating: {comment.rating}</h5>
                  <h5>Comment: {comment.comment}</h5>
              </li>
          ))}
-         </ul>
+         </ul> */}
          <Watchlistlists watchlists={watchlists} />
          </> ): null }
         
     </div>
   )
-}
 
-export default MoviesCard      
-          
-    
-        
-          
-    
-    
+}
+export default MoviesCard       

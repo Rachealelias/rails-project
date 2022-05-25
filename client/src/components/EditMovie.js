@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react'
-import {useHistory, useParams} from "react-router-dom"
+import {useHistory, useParams, Redirect} from "react-router-dom"
 
-function EditMovie({movieObj, handleUpdate, movie}) {
+function EditMovie({movieObj, handleUpdate, movie, user}) {
     const [editMovieObj, setEditMovieObj] = useState(movieObj)
     const {id} = useParams()
     const history = useHistory()
@@ -49,6 +49,7 @@ function EditMovie({movieObj, handleUpdate, movie}) {
         history.push("/movies")
         })
     }
+    if (!user || user.role !== "admin") return <Redirect to="/movies"  />
     if (!editMovieObj) return <h4>loading...</h4>
 return (
     <div>

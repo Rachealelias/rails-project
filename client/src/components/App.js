@@ -5,7 +5,7 @@ import Login from "../pages/Login";
 import MovieForm from "./MovieForm";
 import MoviesContainer from "../containers/MoviesContainer";
 import MoviesCard from "./MoviesCard";
-import EditMovies from "./EditMovie";
+import EditMovie from "./EditMovie";
 import Profile from "./Profile";
 
 function App() {
@@ -34,13 +34,13 @@ function App() {
             <MovieForm user={user} />
           </Route>
           <Route path="/movies/:id/edit">
-            <EditMovies />
+            <EditMovie user={user}/>
           </Route>
           <Route path="/movies/:id">
             <MoviesCard user={user} />
           </Route>
           <Route path="/movies">
-            <MoviesContainer />
+            <MoviesContainer user={user}/>
           </Route>
         </Switch>
       </main>

@@ -4,6 +4,10 @@ import "./Profile.css"
 // import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
  function Profile({user}) {
+     const handleSubmit = (e) => {
+         e.preventDefault()
+         fetch(`/api/users/${user.id}`)
+     }
    return (
 
     <div className="user">
@@ -19,11 +23,11 @@ import "./Profile.css"
             {/* <PermIdentityIcon className="userShowIcon" /> */}
             <span className="userShowInfoTitle">{user.username}</span>
           </div>
-          <span className="userShowTitle">Active Since</span>
-          <div className="userShowInfo">
+          {/* <span className="userShowTitle">Active Since</span>
+          <div className="userShowInfo"> */}
             {/* <CalendarTodayIcon className="userShowIcon" />
             <span className="userShowInfoTitle">{user.created_at ? dateformat(user.created_at, 'dddd, mmmm dS yyyy') : ""}</span> */}
-          </div>
+          {/* </div> */}
           <span className="userShowTitle">Contact Details</span>
           <div className="userShowInfo">
             {/* <MailOutlineIcon className="userShowIcon" /> */}
@@ -31,9 +35,31 @@ import "./Profile.css"
           </div>
         </div>
       </div>
-      <div className="userUpdate">
+      
+    </div>
+  </div> 
+  
+  );
+ }
+export default Profile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ {/* <div className="userUpdate">
         <span className="userUpdateTitle">Edit</span>
-        <form className="userUpdateForm">
+        <form className="userUpdateForm" onSubmit={handleSubmit}>
           <div className="userUpdateLeft">
             <div className="userUpdateItem">
               <label>Username</label>
@@ -56,11 +82,4 @@ import "./Profile.css"
             <button className="userUpdateButton">Update</button>
           </div>
         </form>
-      </div>
-    </div>
-  </div>
-  
-);
- }
-
- export default Profile
+      </div>*/}

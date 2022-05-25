@@ -2,14 +2,16 @@ import {useState, useEffect} from 'react'
 import MoviesLists from '../components/MoviesLists';
 import "../components/styles.css"
 
-function MoviesContainer() {
+function MoviesContainer({user}) {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
         fetch("/api/movies")
-        .then(r => r.json())
-        .then(data => setMovies(data))
-        .catch(err => alert(err))  
+        .then((r) => r.json())
+        .then((data) => {
+          setMovies(data)
+        })
+        .catch((err) => alert(err))  
     }, []);
 
     function deleteMovie(id){
@@ -20,7 +22,7 @@ function MoviesContainer() {
     }
   return (
     <div className='movie-container'>
-    <MoviesLists movies={movies} deleteMovie={deleteMovie} />
+    <MoviesLists movies={movies} user={user} deleteMovie={deleteMovie} />
     </div>
   )
 }

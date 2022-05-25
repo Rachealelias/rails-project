@@ -1,8 +1,8 @@
 import {useState} from "react"
-import {useHistory} from "react-router-dom"
+import {useHistory, Redirect} from "react-router-dom"
 
 
-function MovieForm() {
+function MovieForm({user}) {
     const [movie, setMovie] = useState({
         title: "",
         image_url: "",
@@ -40,6 +40,7 @@ function MovieForm() {
         })
         .catch(err => (err.message))
      }
+     if (!user || user.role !== "admin") return <Redirect to="/movies" />
   return (
     <div>
         <h3>Create a new movie</h3>
