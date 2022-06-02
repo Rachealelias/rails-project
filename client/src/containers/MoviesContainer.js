@@ -4,6 +4,7 @@ import "../components/styles.css"
 
 function MoviesContainer({user}) {
     const [movies, setMovies] = useState([]);
+    // const [sortBy, setSortBy] = useState('asc');
 
     useEffect(() => {
         fetch("/api/movies")
@@ -20,6 +21,14 @@ function MoviesContainer({user}) {
           setMovies(moviesFiltered);
           console.log(movies)
     }
+
+    // const sortedMovies = [...created_movies].sort((stock1, stock2) => {
+    //   if (sortBy === "asc") {
+    //     return stock1.title(stock2.title);
+    //   } else {
+    //     return stock1.price - stock2.price;
+    //   }
+    // });
   return (
     <div className='movie-container'>
     <MoviesLists movies={movies} user={user} deleteMovie={deleteMovie} />

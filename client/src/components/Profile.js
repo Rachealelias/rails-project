@@ -1,15 +1,13 @@
+import {Link} from 'react-router-dom'
 import "./Profile.css"
 // import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 // import MailOutlineIcon from '@mui/icons-material/MailOutline';
 // import PermIdentityIcon from '@mui/icons-material/PermIdentity';
 
  function Profile({user}) {
-     const handleSubmit = (e) => {
-         e.preventDefault()
-         fetch(`/api/users/${user.id}`)
-     }
+     
    return (
-
+<>
     <div className="user">
     <div className="userTitleContainer">
       <h1 className="userTitle">User Profile</h1>
@@ -32,13 +30,35 @@ import "./Profile.css"
           <div className="userShowInfo">
             {/* <MailOutlineIcon className="userShowIcon" /> */}
             <span className="userShowInfoTitle">{user.email}</span>
-          </div>
+          </div>  
         </div>
       </div>
       
     </div>
   </div> 
-  
+  <div className='user'>
+				{user.role === 'admin' ? (
+					<div className='userShow'>
+						<span className='userShowTitle'>Posted Venues</span>
+						<ul>
+							{user.sort_movie?.map((sorted_movie) => (
+								<li key={sorted_movie.id}>
+									<p>
+                                    <Link style={{ textDecoration: 'none', color: 'black' }}
+											to={`/movies/${sorted_movie.id}`}
+											className='userShowInfoTitle'
+										>
+                                        {sorted_movie.title}
+                                        </Link>
+                                    </p>
+								</li>
+							))}
+						</ul>
+					</div>
+				) : null}
+				
+			</div>
+  </>
   );
  }
 export default Profile

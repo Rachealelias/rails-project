@@ -9,4 +9,9 @@ class Movie < ApplicationRecord
     def comments
         self.watchlists.map{|w| {rating: w.rating, comment: w.comment}}
     end
+
+    def select_movie(title)
+        self.where(title: title.title)
+    end
+    
 end

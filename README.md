@@ -1,7 +1,28 @@
-# Rails and React Heroku Demo App
+# Movie App: Rails and React App
+
+## Description
+Movie app is an app made for seeing movies online. Users can come online, watch a movie, make comments and rate a movie. A user(admin) can create movies, delete movies and edit movies.
+
+## User(Role:Guest)
+- Can see a movie
+- Can add a comment on a particular movie
+- Can rate a movie
+- Can also view  their profile information
+- Can Signup to be a user of the app
+- Can signin with their existing username and password
+- Can view all movies
+
+## User(Role:Admin)
+- Can create a Movie
+- Can delete/Edit a movie
+- Can also view their profile information
+- Can Signup to be a user of the app
+- Can signin with their existing username and password
+- Can view all movies
+
 
 This app uses a Rails API and React frontend that can be deployed to a single
-domain. For ease of deployment, both projects are contained in the same
+ For ease of deployment, both projects are contained in the same
 repository. All React code is in the `/client` directory during development.
 
 When the application is deployed, the production version of the React application
@@ -24,6 +45,13 @@ Install Heroku CLI (if you don't already have it):
 ```sh
 brew tap heroku/brew && brew install heroku
 ```
+## Reflection
+This app was built using a rails api backend with a react frontend using flatiron project demo file. Application of active model serializer, rails file structure, routing, cookies and sessions ,authorization and authentication including password protection.
+I implemented at least 3 different client-side routing using the react router dom with navigation bar to navigate between routes.
+I also added a bit of CSS Styling.
+
+## Resources
+- Project Deploying Demo App - (https://github.com/learn-co-curriculum/phase-4-deploying-demo-app)
 
 ## Running the App in Development
 
