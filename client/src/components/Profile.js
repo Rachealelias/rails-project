@@ -36,28 +36,7 @@ import "./Profile.css"
       
     </div>
   </div> 
-  <div className='user'>
-				{user.role === 'admin' ? (
-					<div className='userShow'>
-						<span className='userShowTitle'>Posted Venues</span>
-						<ul>
-							{user.sort_movie?.map((sorted_movie) => (
-								<li key={sorted_movie.id}>
-									<p>
-                                    <Link style={{ textDecoration: 'none', color: 'black' }}
-											to={`/movies/${sorted_movie.id}`}
-											className='userShowInfoTitle'
-										>
-                                        {sorted_movie.title}
-                                        </Link>
-                                    </p>
-								</li>
-							))}
-						</ul>
-					</div>
-				) : null}
-				
-			</div>
+  
   </>
   );
  }
