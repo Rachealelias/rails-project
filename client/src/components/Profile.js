@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 import "./Profile.css"
 // import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 // import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -41,44 +41,3 @@ import "./Profile.css"
   );
  }
 export default Profile
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- {/* <div className="userUpdate">
-        <span className="userUpdateTitle">Edit</span>
-        <form className="userUpdateForm" onSubmit={handleSubmit}>
-          <div className="userUpdateLeft">
-            <div className="userUpdateItem">
-              <label>Username</label>
-              <input
-                type="text"
-                placeholder={user.username}
-                className="userUpdateInput"
-              />
-            </div>
-            <div className="userUpdateItem">
-              <label>Email</label>
-              <input
-                type="text"
-                placeholder={user.email}
-                className="userUpdateInput"
-              />
-            </div>
-          </div>
-          <div className="userUpdateRight">
-            <button className="userUpdateButton">Update</button>
-          </div>
-        </form>
-      </div>*/}

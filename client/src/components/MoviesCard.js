@@ -26,9 +26,9 @@ console.log(movie)
         }
     }, [movie, id]);
 
-    const handleUpdate = () => {
-        setEdit(true)
-  }
+  //   const handleUpdate = () => {
+  //       setEdit(true)
+  // }
 
      const addNewWatchlist = (watchlistObj) => {
          setWatchlists((currentWatchlists) => [watchlistObj, ...currentWatchlists])

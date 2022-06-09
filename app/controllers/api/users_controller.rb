@@ -22,6 +22,10 @@ class Api::UsersController < ApplicationController
         render json: @current_user
     end
 
+    # def sort_by_name
+    #     render json: User.sort_movie
+    # end
+
     def destroy
         @current_user.destroy
         head :no_content
@@ -38,4 +42,5 @@ class Api::UsersController < ApplicationController
     def check_admin
         render json: { errors: ["Not authorized"] }, status: :unauthorized unless @current_user.admin?
       end
+
 end

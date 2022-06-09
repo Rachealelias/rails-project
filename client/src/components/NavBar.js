@@ -1,4 +1,4 @@
-import React from "react";
+//import {useState} from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Button } from "../styles";
@@ -11,19 +11,20 @@ function NavBar({ user, setUser }) {
       }
     });
   }
-
   return (
     <Wrapper>
       <Logo>
         <Link to="/">Movie App</Link>
       </Logo>
       <Nav>
-        <welcome>
+        <Welcome>
       Signed in as: <a href="/profile">{user.username}</a>
-      </welcome>
+      </Welcome>
+      
       <Button as={Link} to="/movies">
         Movies
-        </Button>
+        </Button> 
+        
         {(user.role === "admin") ? (<Button as={Link} to="/movies/new">
           New Movie
         </Button>) : null }

@@ -10,8 +10,11 @@ class Movie < ApplicationRecord
         self.watchlists.map{|w| {rating: w.rating, comment: w.comment}}
     end
 
-    def select_movie(title)
-        self.where(title: title.title)
+    def self.search_by_comment(search_for)
+       self.all.filter do |movie| 
+        movie.watchlists.find {|w| w.comment.include?(search_for)}
+       end 
     end
     
 end
+ 

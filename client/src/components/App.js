@@ -8,9 +8,10 @@ import MoviesCard from "./MoviesCard";
 import EditMovie from "./EditMovie";
 import Profile from "./Profile";
 
+
+
 function App() {
   const [user, setUser] = useState(null);
-
   useEffect(() => {
     // auto-login
     fetch("/api/me").then((r) => {
@@ -21,6 +22,7 @@ function App() {
   }, []);
 
   if (!user) return <Login onLogin={setUser} />;
+  
 
   return (
     <>
